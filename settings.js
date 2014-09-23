@@ -5,5 +5,4 @@ module.exports = {
         password:'',
         prefix:'mg'
     }
-
 }
