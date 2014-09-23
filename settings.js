@@ -4,5 +4,8 @@ module.exports = {
         username:'',
         password:'',
         prefix:'mg'
+    },
+    mysql:{
+
     }
 }
