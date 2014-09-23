@@ -1,5 +1,5 @@
 {
-  "name": "ch",
+  "name": "yitk-crawler",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
@@ -11,8 +11,11 @@
     "debug": "~2.0.0",
     "ejs": "~0.8.5",
     "mongodb":"~1.4.12",
-    "request":"*",
-    "cheerio":"*"
+      "cheerio":"^0.17.0",
+      "request": "^2.40.0",
+      "tough-cookie": "^0.12.1",
+      "yargs": "^1.3.1",
+      "async":"^0.9.0"
   },
     "devDependencies": {
         "mocha": "*"
