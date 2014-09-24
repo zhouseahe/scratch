@@ -1,8 +1,6 @@
 var parse = require('../lib/parse-subject.js');
 var argv = require('yargs').argv;
-var fs = require('fs');
 var debug = require('debug')('parse');
-debug = console.log.bind(console);
 
 var uris = [];
 uris.push('http://www.yitiku.cn/tiku/yuwen');
