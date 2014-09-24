@@ -4,10 +4,16 @@ var fs = require('fs');
 var debug = require('debug')('parse');
 debug = console.log.bind(console);
 
-var output = argv.output;
-var uri =  'http://www.yitiku.cn/tiku/yuwen/';
+var uris = [];
+uris.push('http://www.yitiku.cn/tiku/yuwen');
+uris.push('http://www.yitiku.cn/tiku/shuxue');
+uris.push('http://www.yitiku.cn/tiku/yingyu');
+
+
 var form = '';
 
-parse(uri,form,output,function(){
-    console.log('finish');
-});
+for(var i = 0; i < uris.length; i ++){
+    parse(uris[i],form,function(){
+        console.log('finish');
+    });
+}
