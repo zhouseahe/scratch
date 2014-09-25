@@ -1,13 +1,9 @@
 var fetch = require('../lib/fetch-question.js');
 var argv = require('yargs').argv;
 var fs = require('fs');
-var debug = require('debug')('fetch');
-var ytklogin = require('../lib/logon-cookie.js');
 
-
-var oDir = argv.output;
 var options = {
-    oDir: oDir
+    oDir: '/yitk'
 }
 
 fs.readFile(sFile, function(err, data) {
