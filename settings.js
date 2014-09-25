@@ -7,5 +7,6 @@ module.exports = {
     },
     mysql:{
 
-    }
+    },
+    host : 'http://www.yitiku.cn'
 }
