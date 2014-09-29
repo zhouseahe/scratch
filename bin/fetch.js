@@ -8,12 +8,12 @@ fs.readFile('../config/cookie.json', function(err, data) {
         throw err;
     }
     var cookie = JSON.parse(data, 'utf8');
-    var options = {
+    var option = {
         oDir: '/yitk',
         cookies :cookie
     }
     var  sources  = ['/shiti/829252.html','/shiti/829215.html','/shiti/829143.html']
-    fetch.fetchQuestions(sources , options,function(){
+    fetch.fetchQuestions(sources ,option,function(){
         console.log('pull finished');
     });
 });
