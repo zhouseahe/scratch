@@ -12,7 +12,8 @@ fs.readFile('../config/cookie.json', function(err, data) {
         oDir: '/yitk',
         cookies :cookie
     }
-    var  sources  = ['/shiti/829252.html','/shiti/829215.html','/shiti/829143.html']
+    //var  sources  = ['/shiti/829252.html','/shiti/829215.html','/shiti/829143.html'];
+    var  sources  = ['/shiti/829252.html'];
     fetch.fetchQuestions(sources ,option,function(){
         console.log('pull finished');
     });
