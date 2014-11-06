@@ -2,3 +2,5 @@ http://www.jikexueyuan.com/
 
 抓取课程信息
 
+生成视频课程分析数据
+
