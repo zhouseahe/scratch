@@ -1,6 +1,6 @@
-var pageService = require('./service/parse-page');
-var exportService = require('./service/exportService');
-var geek = require('./geekconfig');
+var pageService = require('../../lib/geek/service/parse-page');
+var exportService = require('../../lib/geek/service/exportService');
+var geek = require('../../lib/geek/geekconfig');
 
 var param = {};
 param.header=geek.header;
