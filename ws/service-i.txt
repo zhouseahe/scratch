@@ -1,0 +1,57 @@
+var crypto = require('crypto');
+var request = require('request');
+
+var host = 'http://i.xdf.cn/api/ClassAssistant';
+var action ='/GetTeacherVPSClassList';
+
+var method = 'GetTeacherVPSClassList';
+var appid='2009';
+var schoolId='1';
+var teacherCode = 'ZHX1281';
+var phone ='15910399752';
+var appKey ='';
+
+
+var getMd5 = function(str){
+    str = str.toLowerCase();
+    var md5 = crypto.createHash('md5').update(str).digest('hex');
+    return md5.toUpperCase();
+}
+
+
+
+function postInterface(uri,form){
+	var start = new Date();
+	request({
+        method: 'post',
+        url: uri,
+        form:form
+    }, function(err, resp, body) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+		var end = new Date();
+		console.log("timing : " + end.getTime()  -  start.getTime());
+        console.log("response code : " + resp.statusCode)
+    });
+}
+
+
+
+var args = "method="+method+"&appid="+appid+"&schoolid="+schoolId+"&teachercode="+teacherCode+"&phone="+phone+"&pagesize=50&appKey="+appKey+"";
+
+var sign = getMd5(args);
+
+args +='sign' + sign;
+
+
+postInterface(host+action,args);
+
+
+
+
+
+
+
+
