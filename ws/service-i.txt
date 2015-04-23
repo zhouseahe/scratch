@@ -9,7 +9,7 @@ var appid='2009';
 var schoolId='1';
 var teacherCode = 'ZHX1281';
 var phone ='15910399752';
-var appKey ='';
+var appKey ='v5appkey_vps_@#kztsk2m3v';
 
 
 var getMd5 = function(str){
@@ -32,7 +32,7 @@ function postInterface(uri,form){
             return;
         }
 		var end = new Date();
-		console.log("timing : " + end.getTime()  -  start.getTime());
+		console.log(body);
         console.log("response code : " + resp.statusCode)
     });
 }

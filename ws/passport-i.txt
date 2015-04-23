@@ -1,0 +1,91 @@
+var crypto = require('crypto');
+var request = require('request');
+//var uuid = require('uuid');
+
+var getMd5 = function(str){
+    str = str.toLowerCase();
+    var md5 = crypto.createHash('md5').update(str).digest('hex');
+    return md5.toUpperCase();
+}
+
+var webservice = {
+	apphost:'http://i.xdf.cn/api/teacher/',
+	getTeacherByUserIdMethod:'GetTeacherByUserId',
+	appid:'2009',
+	appKey :'v5appkey__@#kztsk2m3v'
+}
+
+var loginservice = {
+	appHost: 'http://passport.xdf.cn/apis/usersv2.ashx',
+	appLoginMethod:'CheckLoginV2',
+	U2AppKey:'ak_s#_qvy*%m!yi158',
+    U2AppId:'5002'
+}
+
+function queryTeacherInfo(userId,cb){
+		var str = ("method="+webservice.getTeacherByUserIdMethod+"&appid="+webservice.appid+"&userId="+userId+
+            "&appKey="+webservice.appKey).toLowerCase();
+        var md5 = getMd5(str);
+        var condition = {
+            method: webservice.getTeacherByUserIdMethod,
+            appid: webservice.appid,
+            userId: userId};
+        condition.sign = md5;
+		postInterface(webservice.apphost,condition,cb);
+}
+
+function login(phone,pwd,cb){
+        var guid = '02bac47f-bb6a-4bc4-b0e2-4064ec2c5502'; // uuid.v1();
+        var str = (loginservice.appLoginMethod+loginservice.U2AppId+guid+phone+pwd+loginservice.U2AppKey).toLowerCase();
+        var md5 = getMd5(str);
+        var condition = {
+            method: loginservice.appLoginMethod,
+            appid: loginservice.U2AppId,
+            user:phone,
+            pwd:pwd,
+            guid:guid
+        };
+        condition.sign=md5;
+        postInterface(loginservice.appHost,condition,cb);
+    }
+
+
+
+function postInterface(uri,form,cb){
+	var start = new Date();
+	console.log("host: "+ uri);
+	console.log("args: "+ JSON.stringify(form));
+	request({
+        method: 'post',
+        url: uri,
+        form:form
+    }, function(err, resp, body) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+		var end = new Date();
+        console.log("response code : " + resp.statusCode);
+		console.log(body)
+		cb(body);
+    });
+}
+
+login('13439793261','khljdsjzsd,.',function(result){
+	var msg = JSON.parse(result);
+	var data = JSON.parse(msg.Data);
+	var userid = data.UserId
+	queryTeacherInfo(userid,function(message){
+		//console.log(message)
+	});
+});
+
+
+
+
+
+
+
+
+
+
